@@ -1,11 +1,10 @@
 # Jenkins slave container for LLVM Research @ UIUC
-FROM ubuntu:14.04
+FROM ubuntu:14.10
 # Original MAINTAINER Ervin Varga <ervin.varga@gmail.com>
 # Not trying to steal credit! But support for this should go to me :)
 MAINTAINER Will Dietz <w@wdtz.org>
 
 # Make sure the package repository is up to date.
-RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main universe" > /etc/apt/sources.list
 RUN apt-get update
 
 # Install a basic SSH server
