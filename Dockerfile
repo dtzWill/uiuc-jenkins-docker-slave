@@ -1,6 +1,6 @@
-# This Dockerfile is used to build an image containing basic stuff to be used as a Jenkins slave build node.
+# Jenkins slave container for LLVM Research @ UIUC
 FROM ubuntu:14.04
-# MAINTAINER Ervin Varga <ervin.varga@gmail.com>
+# Original MAINTAINER Ervin Varga <ervin.varga@gmail.com>
 # Not trying to steal credit! But support for this should go to me :)
 MAINTAINER Will Dietz <w@wdtz.org>
 
@@ -13,7 +13,7 @@ RUN apt-get install -y openssh-server
 RUN sed -i 's|session    required     pam_loginuid.so|session    optional     pam_loginuid.so|g' /etc/pam.d/sshd
 RUN mkdir -p /var/run/sshd
 
-# Install JDK 7 (latest edition)
+# Install JDK 7
 RUN apt-get install -y --no-install-recommends openjdk-7-jdk
 
 # Add user jenkins to the image
@@ -26,7 +26,7 @@ EXPOSE 22
 
 CMD ["/usr/sbin/sshd", "-D"]
 
-# Build deps
+# Build deps for our research software
 RUN apt-get install -y build-essential git vim cmake
 RUN apt-get install -y golang libboost1.55-dev
 
