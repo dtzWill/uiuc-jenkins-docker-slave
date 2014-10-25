@@ -29,6 +29,9 @@ RUN adduser --quiet jenkins
 # Set password for the jenkins user (you may want to alter this).
 RUN echo "jenkins:jenkins" | chpasswd
 
+COPY docker-slave-ssh /home/jenkins/.ssh
+RUN chown jenkins:jenkins -R /home/jenkins/.ssh
+
 # Build deps for our research software
 RUN apt-get install -y build-essential git vim cmake
 RUN apt-get install -y golang libboost1.55-dev
