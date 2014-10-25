@@ -6,7 +6,7 @@ MAINTAINER Will Dietz <w@wdtz.org>
 
 # Prefer local UIUC mirror (cosmos):
 RUN sed -i.docker.orig /etc/apt/sources.list \
-	-e 's@http://archive\.ubuntu\.com@http://cosmos.cites.illinois.edu/pub/ubuntu@'
+	-e 's@http://archive\.ubuntu\.com/ubuntu@http://cosmos.cites.illinois.edu/pub/ubuntu@'
 
 # Make sure the package repository is up to date.
 RUN apt-get update
